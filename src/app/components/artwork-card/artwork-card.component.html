@@ -1,0 +1,17 @@
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img class="card-img-top" [src]="artwork.imageUrl" [alt]="artwork.title">
+    </div>
+    <div class="flip-card-back">
+      <div class="row card-title">
+        <div class="col-12">
+          <div class="btn btn-link btn-lg"> {{artwork.title}} </div>
+        </div>
+      </div>
+      <div class="row">
+        <p class="card-text multiline-ellipsis">{{artwork.description | format: 250 }}</p>
+      </div>
+    </div>
+  </div>
+</div>

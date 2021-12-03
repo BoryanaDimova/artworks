@@ -1,0 +1,26 @@
+<div class="row mt-3 mt-md-5 py-1 align-items-center">
+  <div class="col">
+    <div class="card mt-5 mt-md-0">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="card-title">Artworks</h5>
+          <div class="btn-group" role="group" aria-label="Switch view">
+            <button id="list-view" type="button" class="btn btn-primary">
+              <i class="fa fa-th-list"></i>
+            </button>
+            <button id="grid-view" type="button" class="btn btn-outline-primary">
+              <i class="fa fa-grip-horizontal"></i>
+            </button>
+          </div>
+        </div>
+        <hr/>
+        <div id="artwork-list" class="row">
+          <div class="col-lg-4 col-md-6 col-sm-12 card-holder" *ngFor="let artwork of artworks">
+            <app-artwork-card [artwork]="artwork"></app-artwork-card>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

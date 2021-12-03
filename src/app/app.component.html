@@ -1,0 +1,77 @@
+<div class="app-main">
+  <!--Navbar -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <!-- Brand -->
+    <a class="navbar-brand text-center">{{ title }} <br/> {{subtitle}}</a>
+    <!--/.Brand -->
+
+    <!-- Collapse -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"
+            (click)="isMenuCollapsed = !isMenuCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--/.Collapse -->
+
+    <!-- Links -->
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarContent">
+
+      <!-- Left -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link waves-effect waves-light" routerLink="/artworks-table">All Artworks
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+
+      </ul>
+      <!--/.Left -->
+
+      <!-- Right -->
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" role="button">Sign up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" role="button">Login</a>
+        </li>
+      </ul>
+      <!--/.Right -->
+
+    </div>
+    <!--/.Links -->
+  </nav>
+  <!--/.Navbar -->
+
+
+  <div class="container justify-content-center mt-4">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!--Footer-->
+  <footer class="position-absolute bottom-0 w-100 border-top footer fixed-bottom">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+          <svg class="bi" width="30" height="24">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+        <span class="text-muted">© 2021, Art Institute of Chicago</span>
+      </div>
+
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3"><a class="text-muted" href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        </li>
+        <li class="ms-3"><a class="text-muted" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+        <li class="ms-3"><a class="text-muted" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <!--/.Footer-->
+
+</div>
