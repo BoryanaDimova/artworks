@@ -2,25 +2,37 @@
   <div class="col">
     <div class="card mt-5 mt-md-0">
       <div class="card-body">
+        <h2 class="card-title">Artworks</h2>
         <div class="d-flex justify-content-between align-items-center mb-2">
-          <h5 class="card-title">Artworks</h5>
+          <button class="toggle-filters btn btn-light" data-toggle="button" type="button" (click)="toggleFilters()">
+            <fa-icon [icon]="['fas','sliders-h']"></fa-icon>
+            {{toggleLabel}}
+          </button>
           <div class="btn-group" role="group" aria-label="Switch view">
             <button id="list-view" type="button" class="btn btn-primary">
-              <i class="fa fa-th-list"></i>
+              <fa-icon [icon]="['fas','th']"></fa-icon>
             </button>
             <button id="grid-view" type="button" class="btn btn-outline-primary">
-              <i class="fa fa-grip-horizontal"></i>
+              <fa-icon [icon]="['fas','th-list']"></fa-icon>
             </button>
           </div>
         </div>
         <hr/>
-        <div id="artwork-list" class="row">
-          <div class="col-lg-4 col-md-6 col-sm-12 card-holder" *ngFor="let artwork of artworks">
-            <app-artwork-card [artwork]="artwork"></app-artwork-card>
-          </div>
-        </div>
 
+        <div class="container artworks-container">
+          <div class="row flex-nowrap filter">
+            <div class="col-3" *ngIf="showFilter">
+              <app-artworks-filter></app-artworks-filter>
+            </div>
+            <hr/>
+            <div id="artwork-list" [class]="showFilter ? 'col-9 card-deck' : 'col-12 card-deck'">
+              <div class="artwork-card" *ngFor="let artwork of artworks">
+                <app-artwork-card [artwork]="artwork"></app-artwork-card>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
+</div>
 </div>

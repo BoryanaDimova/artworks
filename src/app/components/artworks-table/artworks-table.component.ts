@@ -9,19 +9,38 @@ import {ArtworksService} from "../../services/artworks.service";
   styleUrls: ['./artworks-table.component.css']
 })
 export class ArtworksTableComponent implements OnInit, OnDestroy{
+
+
   // @ts-ignore
   artworks: Artwork[];
   destroy$ = new Subject<boolean>();
+  private _toggleLabel = 'Show';
+  showFilter = false;
+
   constructor(private artworksService: ArtworksService) { }
 
   ngOnInit(): void {
-    this.getArtworks();
+    // this.getArtworks();
   }
 
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
+
+  set toggleLabel(value: string) {
+    this._toggleLabel = value;
+  }
+
+  get toggleLabel(){
+    return this._toggleLabel + " Filters";
+  }
+
+  toggleFilters(){
+    this.showFilter = !this.showFilter;
+    this.toggleLabel = this.showFilter ? "Hide" : "Show";
+  }
+
 
   private getArtworks(): void {
     this.artworksService.getAllArtWorks().pipe(
@@ -37,5 +56,6 @@ export class ArtworksTableComponent implements OnInit, OnDestroy{
         }
       });
   }
+
 
 }

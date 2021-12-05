@@ -1,5 +1,16 @@
-.card-holder{
-  margin-bottom: 3rem;
-  min-height: 20rem;
-  max-height: 20rem;
+.card-deck{
+  margin: 0;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.artwork-card{
+  padding-bottom: 1rem;
+}
+
+.artworks-container{
+  min-height: 90vh;
+  min-width: 90vw;
 }

@@ -1,5 +1,8 @@
 html, body {
   height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -16,10 +19,29 @@ body {
   opacity: 0.8;
 }
 .navbar{
-  background: rgba(0, 0, 0, 0.8);
+  background: #82754e;
+  color: white;
 }
 
-/*.footer{*/
-/*  height:40px;*/
-/*  margin-top:-40px;*/
-/*}*/
+.navbar > a{
+  color:white;
+}
+
+.color-white{
+  color: white;
+}
+
+.footer{
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  color: white;
+  background-color: #82754e;
+}
+
+@media screen and (min-width: 1200px) {
+  .container-body {
+    max-width: fit-content;
+  }
+}

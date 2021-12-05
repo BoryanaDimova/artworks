@@ -1,0 +1,40 @@
+<div class="accordion" id="filter-accordion">
+  <div class="card">
+    <div class="btn card-header" data-toggle="collapse" data-target="sort"
+                aria-expanded="true" aria-controls="collapseOne" (click)="toggleFilterBlock($event)">
+        <span class="header">SORT</span>
+        <fa-icon id="sort-icon-up" [icon]="['fas','chevron-up']" size="sm" class="hide"></fa-icon>
+        <fa-icon id="sort-icon-down" [icon]="['fas','chevron-down']" size="sm"></fa-icon>
+    </div>
+    <hr/>
+    <div id="sort" class="collapse" data-parent="#filter-accordion">
+      <div class="card-body">
+          <select class="form-control" id="formControlSorting">
+            <option>By Relevance</option>
+            <option>By Title</option>
+            <option>By Artist</option>
+            <option>By Date</option>
+          </select>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="btn card-header" data-toggle="collapse" data-target="artist"
+         aria-expanded="true" aria-controls="collapseOne" (click)="toggleFilterBlock($event)">
+      <span class="header">ARTISTS</span>
+      <fa-icon id="artist-icon-up" [icon]="['fas','chevron-up']" size="sm" class="hide"></fa-icon>
+      <fa-icon id="artist-icon-down" [icon]="['fas','chevron-down']" size="sm"></fa-icon>
+    </div>
+    <hr/>
+    <div id="artist" class="collapse" data-parent="#filter-accordion">
+      <div class="card-body">
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>By Relevance</option>
+          <option>By Title</option>
+          <option>By Artist</option>
+          <option>By Date</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
