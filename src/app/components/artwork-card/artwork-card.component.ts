@@ -8,16 +8,17 @@ import {Artwork} from '../../models/Artwork.interface';
 export class ArtworkCardComponent implements OnInit {
 
   @Input() artwork: Artwork;
-
+  @Input() isGridView: Boolean;
   constructor() {
     this.artwork = {
       id: -1,
       title: '',
       artist: '',
-      description: '',
       imageUrl: '',
-      imageId: ''
+      imageId: '',
+      categories: []
     };
+    this.isGridView = true;
   }
 
   ngOnInit(): void {

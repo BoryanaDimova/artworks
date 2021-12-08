@@ -5,6 +5,13 @@
   align-items: center;
 }
 
+.row-direction{
+  flex-direction: row;
+}
+
+.col-direction{
+  flex-direction: column;
+}
 
 .artwork-card{
   padding-bottom: 1rem;
@@ -12,5 +19,20 @@
 
 .artworks-container{
   min-height: 90vh;
-  min-width: 90vw;
+}
+
+.table-grid{
+  width: 100%;
+}
+
+.pagination {
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1200px){
+  .artworks-container{
+    min-width: 92vw;
+  }
 }

@@ -1,40 +1,78 @@
-<div class="accordion" id="filter-accordion">
-  <div class="card">
-    <div class="btn card-header" data-toggle="collapse" data-target="sort"
-                aria-expanded="true" aria-controls="collapseOne" (click)="toggleFilterBlock($event)">
+<form [formGroup]="form" xmlns="http://www.w3.org/1999/html">
+  <div class="accordion" id="filter-accordion">
+    <div class="row justify-content-sm-end">
+    <button class="btn btn-outline-dark float-right" (click)="clearFilters()">Clear Filters</button>
+    </div>
+    <br/>
+    <div class="card">
+      <div class="btn card-header" data-toggle="collapse" data-target="sort"
+           aria-expanded="true" aria-controls="collapseOne" (click)="toggleFilterBlock($event)">
         <span class="header">SORT</span>
         <fa-icon id="sort-icon-up" [icon]="['fas','chevron-up']" size="sm" class="hide"></fa-icon>
         <fa-icon id="sort-icon-down" [icon]="['fas','chevron-down']" size="sm"></fa-icon>
-    </div>
-    <hr/>
-    <div id="sort" class="collapse" data-parent="#filter-accordion">
-      <div class="card-body">
-          <select class="form-control" id="formControlSorting">
-            <option>By Relevance</option>
-            <option>By Title</option>
-            <option>By Artist</option>
-            <option>By Date</option>
+      </div>
+      <hr/>
+      <div id="sort" class="collapse" data-parent="#filter-accordion">
+        <div class="card-body">
+          <select class="form-control"
+                  formControlName="sortOrder" id="formControlSorting" (change)="handleSortChange()">
+            <option value="" selected>By Relevance</option>
+            <option value="date_start">By Date</option>
           </select>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="btn card-header" data-toggle="collapse" data-target="artist"
+           aria-expanded="true" aria-controls="collapseOne" (click)="toggleFilterBlock($event)">
+        <span class="header">ARTISTS</span>
+        <fa-icon id="artist-icon-up" [icon]="['fas','chevron-up']" size="sm" class="hide"></fa-icon>
+        <fa-icon id="artist-icon-down" [icon]="['fas','chevron-down']" size="sm"></fa-icon>
+      </div>
+      <hr/>
+      <div id="artist" class="collapse" data-parent="#filter-accordion">
+        <div class="card-body">
+          <div class="input-group flex-nowrap mb-3">
+            <input type="text" class="form-control" aria-describedby="addon-wrapping" placeholder="Search..."
+                   formControlName="search"
+                   (keypress)="onSearch()">
+            <fa-icon [icon]="['fas','search']" size="sm" class="input-group-text" id="addon-wrapping"></fa-icon>
+          </div>
+          <div class="form-check" *ngFor="let artist of artists">
+            <input class="form-check-input"
+                   type="radio"
+                   formControlName="artists"
+                   [value]="artist.title"
+                   id="{{artist.id}}"
+                   (change)="handleArtistSelect()">
+            <label class="form-check-label" for="{{artist.id}}">{{artist.title}}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="btn card-header" data-toggle="collapse" data-target="type"
+           aria-expanded="true" aria-controls="collapseOne" (click)="toggleFilterBlock($event)">
+        <span class="header">DEPARTMENTS</span>
+        <fa-icon id="type-icon-up" [icon]="['fas','chevron-up']" size="sm" class="hide"></fa-icon>
+        <fa-icon id="type-icon-down" [icon]="['fas','chevron-down']" size="sm"></fa-icon>
+      </div>
+      <hr/>
+      <div id="type" class="collapse" data-parent="#filter-accordion">
+        <div class="card-body">
+          <div class="form-check" *ngFor="let department of departments">
+            <input class="form-check-input"
+                   formControlName="departments"
+                   [value]="department.title"
+                   type="radio"
+                   id="{{department.id}}"
+                   (change)="handleDepartmentSelect()"/>
+            <label class="form-check-label" for="{{department.id}}">{{department.title}}
+            </label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="card">
-    <div class="btn card-header" data-toggle="collapse" data-target="artist"
-         aria-expanded="true" aria-controls="collapseOne" (click)="toggleFilterBlock($event)">
-      <span class="header">ARTISTS</span>
-      <fa-icon id="artist-icon-up" [icon]="['fas','chevron-up']" size="sm" class="hide"></fa-icon>
-      <fa-icon id="artist-icon-down" [icon]="['fas','chevron-down']" size="sm"></fa-icon>
-    </div>
-    <hr/>
-    <div id="artist" class="collapse" data-parent="#filter-accordion">
-      <div class="card-body">
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>By Relevance</option>
-          <option>By Title</option>
-          <option>By Artist</option>
-          <option>By Date</option>
-        </select>
-      </div>
-    </div>
-  </div>
-</div>
+</form>

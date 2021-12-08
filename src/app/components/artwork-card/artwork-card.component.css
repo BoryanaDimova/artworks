@@ -15,14 +15,19 @@
   text-align: justify;
 }
 
-.card{
-  height: 25rem;
+.grid{
+  height: 28rem;
   width: 20rem;
 }
 
 .card-img-top{
-  height: 17rem;
+  height: 15rem;
   vertical-align: middle;
+}
+
+.card-img-left{
+  width: 18rem;
+  height: 100%;
 }
 
 .card-text{
@@ -31,4 +36,22 @@
 
 .card-body{
   padding: 1rem;
+}
+
+.flex-row{
+  flex-direction: row;
+  height: 15rem;
+  width: 100%;
+}
+
+.img-row{
+  width: 15%;
+}
+
+.categories{
+  display: contents;
+}
+
+.title-section{
+  padding: 2%;
 }

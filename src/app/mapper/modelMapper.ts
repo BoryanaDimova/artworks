@@ -4,7 +4,7 @@ export class ModelMapper<T> {
   _target: any;
   constructor(type: { new(): T }) {
     this._target = new type();
-    this._propertyMapping = this._target.constructor._propertyMap;
+    this._propertyMapping = this._target.constructor._propertyMap ? this._target.constructor._propertyMap : {};
   }
 
   map(source: any) {

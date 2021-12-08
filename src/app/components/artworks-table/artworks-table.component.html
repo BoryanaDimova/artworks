@@ -9,10 +9,10 @@
             {{toggleLabel}}
           </button>
           <div class="btn-group" role="group" aria-label="Switch view">
-            <button id="list-view" type="button" class="btn btn-primary">
+            <button id="list-view" type="button" [class]="'btn' + (isGridView ? ' btn-primary' : ' btn-outline-primary')" (click)="gridView()">
               <fa-icon [icon]="['fas','th']"></fa-icon>
             </button>
-            <button id="grid-view" type="button" class="btn btn-outline-primary">
+            <button id="grid-view" type="button" [class]="'btn' + (isGridView ? ' btn-outline-primary' : ' btn-primary')" (click)="listView()">
               <fa-icon [icon]="['fas','th-list']"></fa-icon>
             </button>
           </div>
@@ -21,18 +21,56 @@
 
         <div class="container artworks-container">
           <div class="row flex-nowrap filter">
-            <div class="col-3" *ngIf="showFilter">
-              <app-artworks-filter></app-artworks-filter>
+            <div class="col-2" *ngIf="showFilter">
+              <app-artworks-filter (changeSortOrder)="onSortOrderChange($event)"
+                                   (artistSelect)="handleArtistSelect($event)"
+                                   (departmentSelect)="handleDepartmentSelect($event)"
+                                   (clearFiltersEvt)="handleClearFilters()"></app-artworks-filter>
             </div>
             <hr/>
-            <div id="artwork-list" [class]="showFilter ? 'col-9 card-deck' : 'col-12 card-deck'">
-              <div class="artwork-card" *ngFor="let artwork of artworks">
-                <app-artwork-card [artwork]="artwork"></app-artwork-card>
+            <div id="artwork-list"
+                 [class]="'card-deck'+ (showFilter ? ' col-10' : ' col-12') +  (isGridView ? ' row-direction' : ' col-direction')">
+              <div [class]="'artwork-card' + (isGridView ? '' : ' table-grid')" *ngFor="let artwork of artworks">
+                <app-artwork-card [artwork]="artwork" [isGridView]="isGridView"></app-artwork-card>
               </div>
             </div>
           </div>
+          <div class="pagination row">
+            <ngb-pagination [collectionSize]="pagination.total"
+                            [pageSize]="pagination.limit"
+                            [(page)]="pagination.currentPage"
+                            [boundaryLinks]="true"
+                            (pageChange)="handlePageChange($event)">
+              <ng-template ngbPaginationPages let-page let-pages="pages">
+                <li class="ngb-custom-pages-item" *ngIf="pages.length > 0">
+                  <div class="form-group d-flex flex-nowrap px-2">
+                    <label
+                      id="paginationInputLabel"
+                      for="paginationInput"
+                      class="col-form-label mr-2 ml-1"
+                    >Page</label>
+                    <input #i
+                           type="text"
+                           inputmode="numeric"
+                           pattern="[0-9]*"
+                           class="form-control custom-pages-input"
+                           id="paginationInput"
+                           [value]="page"
+                           (keyup.enter)="selectPage(i.value)"
+                           (blur)="selectPage(i.value)"
+                           (input)="formatInput($any($any($event)).target)"
+                           aria-labelledby="paginationInputLabel paginationDescription"
+                           style="width: 4rem"
+                    />
+                    <span id="paginationDescription" class="col-form-label text-nowrap px-2">
+                  of {{pages.length}}</span>
+                  </div>
+                </li>
+              </ng-template>
+            </ngb-pagination>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
