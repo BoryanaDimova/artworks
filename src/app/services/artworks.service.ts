@@ -75,24 +75,24 @@ export class ArtworksService {
     let queryFilters = '';
     filters?.forEach((value: object, key: string) => {
 
-      queryFilters += this.getFilter(key, value, queryFilters.includes('query'));
+      queryFilters += this.getFilter(key, value);
     });
     return `${this.baseUrl}/${endpoint}?fields=${this.artworkFields}${queryFilters}&page=${page}&limit=${this.LIMIT}`;
   }
 
   //filter for artist
   // https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title&query[match_phrase][artist_title]=Salvador%20Dal%C3%AD&limit=50
-  getFilter(key: string, value: object, containsQuery: boolean) {
+  getFilter(key: string, value: object) {
     let filter = '';
     switch (key) {
       case 'sort':
         filter = `&sort[${value}][order]=asc`;
         break;
       case 'artist':
-        filter = containsQuery ? `&q=${value}` : `&query[match][artist_title]=${value}`;
+        filter = `&query[match][artist_title]=${value}`;
         break;
       case 'department':
-        filter = containsQuery ? `&q=${value}` : `&query[match][department_title]=${value}`;
+        filter = `&q=${value}`;
         break;
     }
 

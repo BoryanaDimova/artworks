@@ -28,9 +28,12 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"
+            ]
           },
           "configurations": {
             "production": {
