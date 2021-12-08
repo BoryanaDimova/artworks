@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
 
+It uses the information from the Art Institute of Chicago.
+
+Official Site: https://www.artic.edu/collection
+
+API: https://api.artic.edu/docs/#introduction
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
